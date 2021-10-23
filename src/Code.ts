@@ -21,7 +21,6 @@ function LongRunTask(
   const funcName = 'LongRunTask';
 
   // you can get the parameters from LongRun class.
-  // the order of the array is the same as the order of the command definition.
   const params = longRun.getParameters(funcName);
   const times = parseInt(params[0]);
   const funcExecutionSeconds = parseInt(params[1]);
