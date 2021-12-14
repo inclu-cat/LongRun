@@ -246,7 +246,9 @@ function executeLongRun(mainFuncName, loopCount, params, initializerName, finali
     longRunParams.push(String(loopCount));
     longRunParams.push(initializerName === null ? '' : initializerName);
     longRunParams.push(finalizerName === null ? '' : finalizerName);
-    longRunParams.push(params === null ? '' : params.join(','));
+    if (params != null && params.length > 0) {
+        longRunParams.push(params.join(','));
+    }
     LongRun.instance.setParameters(LongRun.EXECUTE_LONGRUN_FUNCNAME, longRunParams);
     _executeLongRun();
 }
