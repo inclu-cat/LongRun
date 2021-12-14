@@ -14,6 +14,7 @@ export class LongRun {
   static PREFIX_OPTION:string = "option_";
   static RUNNING_MAX_SECONDS:number = 4*60;
   static RUNNING_DELAY_MINUTES:number = 1;
+  static EXECUTE_LONGRUN_FUNCNAME:string = "_executeLongRun";
 
   /**
    * Private constructor
@@ -209,7 +210,6 @@ export class LongRun {
     properties.deleteProperty(LongRun.PREFIX_RUNNING+funcName);
   }
 
-
   /**
    * Deletes the trigger
    * @param triggerKey
@@ -242,4 +242,84 @@ export class LongRun {
     PropertiesService.getScriptProperties().setProperty(triggerKey, triggerId);
   }
 
+}
+
+/**
+ * A function allows you to easily execute long-run task using the LongRun class.
+ *
+ * @param mainFuncName - Name of the function to be executed each time.
+ * @param loopCount - Number of times to execute the main function.
+ * @param params - Parameters passed to each function (string[]). (optional)
+ * @param initializerName - Name of the first function to be executed on first or restart. (optional)
+ * @param finalizerName - Name of the function to be called on interruption or when all processing is complete. (optional)
+ *
+ * The definition of each function to be passed should be as follows.
+ *  Main function:  function [function name](index: number, params: string[]) {...}
+ *  Initializer:    function [function name](startIndex: number, params: string[]) {...}
+ *  Finalizer:      function [function name](isFinished: boolean, params: string[]) {...}
+ */
+export function executeLongRun( mainFuncName: string,
+                         loopCount: number,
+                         params: string[] = null,
+                         initializerName: string = null,
+                         finalizerName: string = null ) {
+  const longRunParams: string[] = [];
+  longRunParams.push(mainFuncName);
+  longRunParams.push(String(loopCount));
+  longRunParams.push(initializerName === null ? '' : initializerName);
+  longRunParams.push(finalizerName === null ? '' : finalizerName);
+  longRunParams.push(params === null ? '' : params.join(','));
+
+  LongRun.instance.setParameters(LongRun.EXECUTE_LONGRUN_FUNCNAME, longRunParams);
+  _executeLongRun();
+}
+
+/**
+ * The main body of executeLongRun
+ */
+function _executeLongRun(){
+  let longRun = LongRun.instance;
+
+  // get parameters
+  const longRunParams = longRun.getParameters(LongRun.EXECUTE_LONGRUN_FUNCNAME);
+  const mainFuncName = longRunParams[0];
+  const loopCount = parseInt(longRunParams[1]);
+  const initializerName = longRunParams[2];
+  const finalizerName = longRunParams[3];
+  const params: string[] = [];
+  for ( let i = 4; i < longRunParams.length; i++ ){
+    params.push('"' + longRunParams[i] + '"');
+  }
+  const paramsLiteral = '[' + params.join(',') + ']';
+
+  let startIndex = longRun.startOrResume(LongRun.EXECUTE_LONGRUN_FUNCNAME);
+  try {
+    // *** call initializer ***
+    if ( initializerName != null && initializerName.length > 0 ){
+      eval(initializerName + '(' + startIndex + ',' + paramsLiteral + ')');
+    }
+    // execute the iterative process.
+    for (let i = startIndex; i < loopCount; i++) {
+      // Each time before executing a process, you need to check if it should be stopped or not.
+      if (longRun.checkShouldSuspend(LongRun.EXECUTE_LONGRUN_FUNCNAME, i)) {
+        // if checkShouldSuspend() returns true, the next trigger has been set
+        // and you should get out of the loop.
+        console.log('*** The process has been suspended. ***');
+        break;
+      }
+      // *** call main process ***
+      eval(mainFuncName + '(' + i + ',' + paramsLiteral + ')');
+    }
+  }
+  catch (e) {
+    console.log(e.message);
+  }
+  finally {
+    // you must always call end() to reset the long-running variables if there is no next trigger.
+    const finished = longRun.end(LongRun.EXECUTE_LONGRUN_FUNCNAME);
+    // *** call finalizer ***
+    if ( finalizerName != null && finalizerName.length > 0 ){
+      eval(finalizerName + '(' + finished + ',' + paramsLiteral + ')');
+    }
+  }
 }

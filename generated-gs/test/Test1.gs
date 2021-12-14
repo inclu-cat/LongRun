@@ -2,8 +2,8 @@
 var exports = exports || {};
 var module = module || { exports: exports };
 Object.defineProperty(exports, "__esModule", { value: true });
-//import {LongRun} from "./LongRun";
-function executeTest() {
+//import {LongRun} from "../LongRun";
+function executeTest1() {
     var params = [];
     params.push(3); // How many times the process should be executed
     params.push(1); // How long does it take to process one case? (in seconds)
@@ -20,7 +20,6 @@ function LongRunTask(
     // funcName must equal this function's name.
     var funcName = 'LongRunTask';
     // you can get the parameters from LongRun class.
-    // the order of the array is the same as the order of the command definition.
     var params = longRun.getParameters(funcName);
     var times = parseInt(params[0]);
     var funcExecutionSeconds = parseInt(params[1]);

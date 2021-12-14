@@ -1,6 +1,6 @@
-import {LongRun} from "./LongRun";
+import {LongRun} from "../LongRun";
 
-function executeTest() {
+function executeTest1() {
   const params = [];
   params.push(3); // How many times the process should be executed
   params.push(1); // How long does it take to process one case? (in seconds)

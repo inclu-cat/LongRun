@@ -2,7 +2,7 @@
 var exports = exports || {};
 var module = module || { exports: exports };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LongRun = void 0;
+exports.executeLongRun = exports.LongRun = void 0;
 //import Properties = GoogleAppsScript.Properties.Properties;
 var LongRun = /** @class */ (function () {
     /**
@@ -219,6 +219,82 @@ var LongRun = /** @class */ (function () {
     LongRun.PREFIX_OPTION = "option_";
     LongRun.RUNNING_MAX_SECONDS = 4 * 60;
     LongRun.RUNNING_DELAY_MINUTES = 1;
+    LongRun.EXECUTE_LONGRUN_FUNCNAME = "_executeLongRun";
     return LongRun;
 }());
 exports.LongRun = LongRun;
+/**
+ * A function allows you to easily execute long-run task using the LongRun class.
+ *
+ * @param mainFuncName - Name of the function to be executed each time.
+ * @param loopCount - Number of times to execute the main function.
+ * @param params - Parameters passed to each function (string[]). (optional)
+ * @param initializerName - Name of the first function to be executed on first or restart. (optional)
+ * @param finalizerName - Name of the function to be called on interruption or when all processing is complete. (optional)
+ *
+ * The definition of each function to be passed should be as follows.
+ *  Main function:  function [function name](index: number, params: string[]) {...}
+ *  Initializer:    function [function name](startIndex: number, params: string[]) {...}
+ *  Finalizer:      function [function name](isFinished: boolean, params: string[]) {...}
+ */
+function executeLongRun(mainFuncName, loopCount, params, initializerName, finalizerName) {
+    if (params === void 0) { params = null; }
+    if (initializerName === void 0) { initializerName = null; }
+    if (finalizerName === void 0) { finalizerName = null; }
+    var longRunParams = [];
+    longRunParams.push(mainFuncName);
+    longRunParams.push(String(loopCount));
+    longRunParams.push(initializerName === null ? '' : initializerName);
+    longRunParams.push(finalizerName === null ? '' : finalizerName);
+    longRunParams.push(params === null ? '' : params.join(','));
+    LongRun.instance.setParameters(LongRun.EXECUTE_LONGRUN_FUNCNAME, longRunParams);
+    _executeLongRun();
+}
+exports.executeLongRun = executeLongRun;
+/**
+ * The main body of executeLongRun
+ */
+function _executeLongRun() {
+    var longRun = LongRun.instance;
+    // get parameters
+    var longRunParams = longRun.getParameters(LongRun.EXECUTE_LONGRUN_FUNCNAME);
+    var mainFuncName = longRunParams[0];
+    var loopCount = parseInt(longRunParams[1]);
+    var initializerName = longRunParams[2];
+    var finalizerName = longRunParams[3];
+    var params = [];
+    for (var i = 4; i < longRunParams.length; i++) {
+        params.push('"' + longRunParams[i] + '"');
+    }
+    var paramsLiteral = '[' + params.join(',') + ']';
+    var startIndex = longRun.startOrResume(LongRun.EXECUTE_LONGRUN_FUNCNAME);
+    try {
+        // *** call initializer ***
+        if (initializerName != null && initializerName.length > 0) {
+            eval(initializerName + '(' + startIndex + ',' + paramsLiteral + ')');
+        }
+        // execute the iterative process.
+        for (var i = startIndex; i < loopCount; i++) {
+            // Each time before executing a process, you need to check if it should be stopped or not.
+            if (longRun.checkShouldSuspend(LongRun.EXECUTE_LONGRUN_FUNCNAME, i)) {
+                // if checkShouldSuspend() returns true, the next trigger has been set
+                // and you should get out of the loop.
+                console.log('*** The process has been suspended. ***');
+                break;
+            }
+            // *** call main process ***
+            eval(mainFuncName + '(' + i + ',' + paramsLiteral + ')');
+        }
+    }
+    catch (e) {
+        console.log(e.message);
+    }
+    finally {
+        // you must always call end() to reset the long-running variables if there is no next trigger.
+        var finished = longRun.end(LongRun.EXECUTE_LONGRUN_FUNCNAME);
+        // *** call finalizer ***
+        if (finalizerName != null && finalizerName.length > 0) {
+            eval(finalizerName + '(' + finished + ',' + paramsLiteral + ')');
+        }
+    }
+}
