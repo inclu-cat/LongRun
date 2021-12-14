@@ -257,6 +257,8 @@ export class LongRun {
  *  Main function:  function [function name](index: number, params: string[]) {...}
  *  Initializer:    function [function name](startIndex: number, params: string[]) {...}
  *  Finalizer:      function [function name](isFinished: boolean, params: string[]) {...}
+ *
+ * Note that it is not possible to use executeLongRun() to execute different long-time processes simultaneously.
  */
 export function executeLongRun( mainFuncName: string,
                          loopCount: number,
