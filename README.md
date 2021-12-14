@@ -3,4 +3,5 @@ the LongRun class supports to execute long-running Google Apps Scripts. (A spin-
 
 Related article is [here](https://inclucat.wordpress.com/2021/07/20/an-easy-way-to-deal-with-google-apps-scripts-6-minute-limit/).
 
-See the [Code.ts](https://github.com/inclu-cat/LongRun/blob/main/src/Code.ts) to know how to use this class.
+See the [Code.ts](https://github.com/inclu-cat/LongRun/blob/main/src/Code.ts) to know how to use this class.  
+( If you want generated script files instead of the TypeScript files, see [this folder](https://github.com/inclu-cat/LongRun/tree/main/generated-gs) )
