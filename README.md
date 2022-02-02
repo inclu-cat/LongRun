@@ -14,3 +14,6 @@ If you don't use clasp, but use Apps Script Editor, follow these steps.
 ## How to use
 See the [Test1.ts](https://github.com/inclu-cat/LongRun/blob/main/src/test/Test1.ts) or [Test2.ts](https://github.com/inclu-cat/LongRun/blob/main/src/test/Test2.ts) to know how to use this class.  
 ( If you want generated script files instead of the TypeScript files, see [Test1.gs](https://github.com/inclu-cat/LongRun/blob/main/generated-gs/test/Test1.gs) or [Test2.gs](https://github.com/inclu-cat/LongRun/blob/main/generated-gs/test/Test2.gs) )
+
+## API reference
+See [this page](https://github.com/inclu-cat/LongRun/blob/main/docs/modules.md).
