@@ -4,6 +4,9 @@ var module = module || { exports: exports };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.executeLongRun = exports.LongRun = void 0;
 //import Properties = GoogleAppsScript.Properties.Properties;
+/**
+ * Long-Running Support
+ */
 var LongRun = /** @class */ (function () {
     /**
      * Private constructor
@@ -94,7 +97,8 @@ var LongRun = /** @class */ (function () {
         }
     };
     /**
-     * Starts or Resume Long-Run process.
+     * Starts or Resumes Long-Run process.
+     * @param funcName
      * @returns start index ( 0 for the first time )
      */
     LongRun.prototype.startOrResume = function (funcName) {
@@ -233,9 +237,11 @@ exports.LongRun = LongRun;
  * @param finalizerName - Name of the function to be called on interruption or when all processing is complete. (optional)
  *
  * The definition of each function to be passed should be as follows.
- *  Main function:  function [function name](index: number, params: string[]) {...}
- *  Initializer:    function [function name](startIndex: number, params: string[]) {...}
- *  Finalizer:      function [function name](isFinished: boolean, params: string[]) {...}
+ *  - Main function:  function [function name](index: number, params: string[]) {...}
+ *  - Initializer:    function [function name](startIndex: number, params: string[]) {...}
+ *  - Finalizer:      function [function name](isFinished: boolean, params: string[]) {...}
+ *
+ * Note that it is not possible to use executeLongRun() to execute different long-time processes simultaneously.
  */
 function executeLongRun(mainFuncName, loopCount, params, initializerName, finalizerName) {
     if (params === void 0) { params = null; }
