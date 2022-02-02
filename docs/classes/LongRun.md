@@ -53,7 +53,7 @@ Private constructor
 
 #### Defined in
 
-[LongRun.ts:23](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L23)
+[LongRun.ts:23](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L23)
 
 ## Properties
 
@@ -65,7 +65,7 @@ start time map
 
 #### Defined in
 
-[LongRun.ts:37](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L37)
+[LongRun.ts:37](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L37)
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-[LongRun.ts:17](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L17)
+[LongRun.ts:17](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L17)
 
 ___
 
@@ -85,7 +85,7 @@ ___
 
 #### Defined in
 
-[LongRun.ts:14](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L14)
+[LongRun.ts:14](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L14)
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 #### Defined in
 
-[LongRun.ts:11](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L11)
+[LongRun.ts:11](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L11)
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 #### Defined in
 
-[LongRun.ts:13](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L13)
+[LongRun.ts:13](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L13)
 
 ___
 
@@ -115,7 +115,7 @@ ___
 
 #### Defined in
 
-[LongRun.ts:12](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L12)
+[LongRun.ts:12](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L12)
 
 ___
 
@@ -125,7 +125,7 @@ ___
 
 #### Defined in
 
-[LongRun.ts:16](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L16)
+[LongRun.ts:16](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L16)
 
 ___
 
@@ -135,7 +135,7 @@ ___
 
 #### Defined in
 
-[LongRun.ts:15](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L15)
+[LongRun.ts:15](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L15)
 
 ___
 
@@ -145,7 +145,7 @@ ___
 
 #### Defined in
 
-[LongRun.ts:8](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L8)
+[LongRun.ts:8](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L8)
 
 ## Accessors
 
@@ -161,7 +161,7 @@ Returns singleton instance.
 
 #### Defined in
 
-[LongRun.ts:29](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L29)
+[LongRun.ts:29](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L29)
 
 ## Methods
 
@@ -187,7 +187,7 @@ true - it should be suspended
 
 #### Defined in
 
-[LongRun.ts:145](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L145)
+[LongRun.ts:145](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L145)
 
 ___
 
@@ -209,7 +209,7 @@ Deletes the trigger
 
 #### Defined in
 
-[LongRun.ts:218](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L218)
+[LongRun.ts:218](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L218)
 
 ___
 
@@ -232,7 +232,7 @@ Returns whether the command has finished or not.
 
 #### Defined in
 
-[LongRun.ts:181](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L181)
+[LongRun.ts:181](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L181)
 
 ___
 
@@ -254,7 +254,7 @@ Returns if there is next trigger.
 
 #### Defined in
 
-[LongRun.ts:194](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L194)
+[LongRun.ts:194](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L194)
 
 ___
 
@@ -276,7 +276,7 @@ Returns the function parameters
 
 #### Defined in
 
-[LongRun.ts:85](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L85)
+[LongRun.ts:85](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L85)
 
 ___
 
@@ -298,7 +298,7 @@ Returns if function is running now.
 
 #### Defined in
 
-[LongRun.ts:43](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L43)
+[LongRun.ts:43](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L43)
 
 ___
 
@@ -321,7 +321,7 @@ register the next trigger and set running-flag off
 
 #### Defined in
 
-[LongRun.ts:204](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L204)
+[LongRun.ts:204](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L204)
 
 ___
 
@@ -343,7 +343,7 @@ Resets Long-Running variables
 
 #### Defined in
 
-[LongRun.ts:165](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L165)
+[LongRun.ts:165](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L165)
 
 ___
 
@@ -365,7 +365,7 @@ Sets max execution seconds
 
 #### Defined in
 
-[LongRun.ts:70](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L70)
+[LongRun.ts:70](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L70)
 
 ___
 
@@ -388,7 +388,7 @@ Sets the function parameters.
 
 #### Defined in
 
-[LongRun.ts:100](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L100)
+[LongRun.ts:100](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L100)
 
 ___
 
@@ -411,7 +411,7 @@ Sets the function is running
 
 #### Defined in
 
-[LongRun.ts:55](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L55)
+[LongRun.ts:55](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L55)
 
 ___
 
@@ -434,7 +434,7 @@ Sets a trigger
 
 #### Defined in
 
-[LongRun.ts:237](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L237)
+[LongRun.ts:237](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L237)
 
 ___
 
@@ -456,7 +456,7 @@ Sets the trigger's delay minutes
 
 #### Defined in
 
-[LongRun.ts:77](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L77)
+[LongRun.ts:77](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L77)
 
 ___
 
@@ -480,4 +480,4 @@ start index ( 0 for the first time )
 
 #### Defined in
 
-[LongRun.ts:115](https://github.com/inclu-cat/LongRun/blob/76e6a1e/src/LongRun.ts#L115)
+[LongRun.ts:115](https://github.com/inclu-cat/LongRun/blob/5005ab1/src/LongRun.ts#L115)

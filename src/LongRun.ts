@@ -246,7 +246,14 @@ export class LongRun {
 }
 
 /**
- * A function allows you to easily execute long-run task using the LongRun class.
+ * A function allows you to easily execute long-run task using the LongRun class.<br>
+ * The definition of each function to be passed should be as follows.<br>
+ * <br>
+ *  <b>Main function:</b>  function [function name](index: number, params: string[]) {...}<br>
+ *  <b>Initializer:</b>    function [function name](startIndex: number, params: string[]) {...}<br>
+ *  <b>Finalizer:</b>      function [function name](isFinished: boolean, params: string[]) {...}<br>
+ * <br>
+ * Note that it is not possible to use executeLongRun() to execute different long-time processes simultaneously.
  *
  * @param mainFuncName - Name of the function to be executed each time.
  * @param loopCount - Number of times to execute the main function.
@@ -254,12 +261,6 @@ export class LongRun {
  * @param initializerName - Name of the first function to be executed on first or restart. (optional)
  * @param finalizerName - Name of the function to be called on interruption or when all processing is complete. (optional)
  *
- * The definition of each function to be passed should be as follows.
- *  - Main function:  function [function name](index: number, params: string[]) {...}
- *  - Initializer:    function [function name](startIndex: number, params: string[]) {...}
- *  - Finalizer:      function [function name](isFinished: boolean, params: string[]) {...}
- *
- * Note that it is not possible to use executeLongRun() to execute different long-time processes simultaneously.
  */
 export function executeLongRun( mainFuncName: string,
                          loopCount: number,
