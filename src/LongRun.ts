@@ -1,8 +1,8 @@
+import Properties = GoogleAppsScript.Properties.Properties;
+
 /**
  * Long-Running Support
  */
-import Properties = GoogleAppsScript.Properties.Properties;
-
 export class LongRun {
   // singleton instance
   private static _instance:LongRun;
@@ -108,7 +108,8 @@ export class LongRun {
   }
 
   /**
-   * Starts or Resume Long-Run process.
+   * Starts or Resumes Long-Run process.
+   * @param funcName
    * @returns start index ( 0 for the first time )
    */
   startOrResume(funcName:string):number{
@@ -254,9 +255,9 @@ export class LongRun {
  * @param finalizerName - Name of the function to be called on interruption or when all processing is complete. (optional)
  *
  * The definition of each function to be passed should be as follows.
- *  Main function:  function [function name](index: number, params: string[]) {...}
- *  Initializer:    function [function name](startIndex: number, params: string[]) {...}
- *  Finalizer:      function [function name](isFinished: boolean, params: string[]) {...}
+ *  - Main function:  function [function name](index: number, params: string[]) {...}
+ *  - Initializer:    function [function name](startIndex: number, params: string[]) {...}
+ *  - Finalizer:      function [function name](isFinished: boolean, params: string[]) {...}
  *
  * Note that it is not possible to use executeLongRun() to execute different long-time processes simultaneously.
  */

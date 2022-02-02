@@ -1,5 +1,9 @@
 {
+  "name": "inclu-cat_longrun",
   "dependencies": {
     "@types/google-apps-script": "^1.0.37"
+  },
+  "devDependencies": {
+    "typedoc": "^0.22.11"
   }
 }
