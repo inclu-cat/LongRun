@@ -4,6 +4,7 @@
     "@types/google-apps-script": "^1.0.37"
   },
   "devDependencies": {
-    "typedoc": "^0.22.11"
+    "typedoc": "^0.22.11",
+    "typedoc-plugin-markdown": "^3.11.12"
   }
 }
